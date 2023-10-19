@@ -63,7 +63,7 @@ def costs_counter_advanced_data(meals):
          if meal in menus_advanced.keys():
             total_cost += menus_advanced[meal]['price']
          #checking combos 
-         elif meal in combos_advanced.keys():
+         else:
             total_cost += combos_advanced[meal]['price']
       except: 
          raise MealOutOfTheMenu(meal)

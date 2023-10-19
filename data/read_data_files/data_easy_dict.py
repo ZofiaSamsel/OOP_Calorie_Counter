@@ -1,4 +1,4 @@
-# data
+# basic date in dict
 
 calories = {
    'Hamburger': 600,

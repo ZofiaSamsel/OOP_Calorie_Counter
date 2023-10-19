@@ -1,5 +1,5 @@
 #ignore prototyping nootebook
-main_examples_of_use.ipynb
+examples_of_use.ipynb
 
 #ignore virtual environment
 .venv
@@ -9,3 +9,6 @@ requirements.txt
 
 #ignore __pycache__
 __pycache__/
+
+#ignore .gitignore
+.gitignore

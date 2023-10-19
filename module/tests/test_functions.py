@@ -1,7 +1,10 @@
+#import unittest
 from unittest import TestCase
 
+#import exceptions
 from module.exception import MealTooBigError, MealOutOfTheMenu
 
+#import calorie counter functions
 from module.functions_calorie_counter import total_calories_counter, calorie_counter_advanced_data, costs_counter_advanced_data
 
 #tests for basic dict data
@@ -57,7 +60,7 @@ class CaloriesCounterAdvancedDataTestCase(TestCase):
                              f'Wrong message; expected: A meal "hamburger" is not in the menu')
 
 
-    #price counter with the  same tests
+#price counter with the  same tests
 class CostCounterTestCase(TestCase):
     def test_count_meals_costs(self):
         result = costs_counter_advanced_data(['meal-1'])

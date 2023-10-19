@@ -1,10 +1,11 @@
+#import typing
 from typing import List, Optional
-import datetime
-import random
-import json
 
+#import datetime
+from datetime import datetime
+
+#import calorie counter functions
 from module.functions_calorie_counter import calorie_counter_advanced_data, costs_counter_advanced_data
-
 
 class Order:
     """
@@ -12,7 +13,7 @@ class Order:
 
     Arguments:
         items (list): A list of item ids.
-        date (date): The date and time of the order.
+        date (date): The date and time of the order. e.g., "1-Jan-2022"
 
     Class attributes:
         counter (int): A counter for the number of orders.
@@ -28,7 +29,7 @@ class Order:
         calories (int): The total calories for the order.
         price (int): The total price for the order.
     """
-    counter = 0
+    counter: int = 0
 
     def __init__(
             self, 
@@ -36,29 +37,34 @@ class Order:
             date: Optional[datetime.date] = None
             ):
         Order.counter += 1
-        self.order_id: str = f"order--{self.counter}.{random.randrange(1,200)}"
-        self._calories = None
-        self._price = None
+        self.order_id: str = f"order--{self.counter}"
+        self._calories: int = None
+        self._price: int = None
         self.order_accepted: bool = None
         self.order_refused_reason: str = None
         self.items = items
-        self.date = date or datetime.date.today()
+        self.date = datetime.strptime(date, "%d-%b-%Y").strftime("%Y-%m-%d") if date else datetime.today().strftime("%Y-%m-%d")
 
-        try:
-            self.calories
-        except:
-            pass
+        self.calories
+        self.price
+
    
     @property
     def calories(self):
         if self._calories is None:
-            self._calories = calorie_counter_advanced_data(self.items) #calculate calories
+            try:
+                self._calories = calorie_counter_advanced_data(self.items) 
+                self.order_accepted = True
+            except Exception as e:
+                self.order_refused_reason = e
+                self.order_accepted = False
         return self._calories
     
     @property
     def price(self):
-        _price = costs_counter_advanced_data(self.items)
-        return _price
+        if self._price is None and self._calories is not None:
+            self._price = costs_counter_advanced_data(self.items)
+        return self._price
     
 
 
