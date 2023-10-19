@@ -1,4 +1,4 @@
-#import json
+#import library: json
 import json
 
 #read data from json files

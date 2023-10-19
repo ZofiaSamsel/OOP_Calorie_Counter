@@ -5,10 +5,13 @@ examples_of_use.ipynb
 .venv
 
 #ignore requirements
-requirements.txt
+#requirements.txt
 
 #ignore __pycache__
 __pycache__/
 
 #ignore .gitignore
 .gitignore
+
+#ignore checkppoits
+.ipynb_checkpoints
