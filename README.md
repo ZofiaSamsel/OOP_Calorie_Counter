@@ -87,7 +87,7 @@ Unit tests are provided to ensure the correctness of the code. There are two tes
 To run the tests, make sure you are in the project directory and execute the following command:
 
     ```bash
-    pytest
+    python -m unittest
     ```
 
 

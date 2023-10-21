@@ -24,7 +24,7 @@ class CaloriesCounterTestCase(TestCase):
     def test_raise_error_if_too_much_calories(self):
         with self.assertRaises(MealTooBigError) as e:
             total_calories_counter(['Hamburger','Veggie Combo','Hamburger','Veggie Combo'])
-            self.assertEqual(e.exception.message, 'Too many calories: 2600', 
+            self.assertEqual(e.exception.message, 'Too many calories: 2600; maximum is 2000.', 
                              f'Wrong message; expected: Too many calories: 2600')
 
     def test_raise_error_if_meal_out_of_the_menu(self):
@@ -49,15 +49,15 @@ class CaloriesCounterAdvancedDataTestCase(TestCase):
 
     def test_raise_error_if_too_much_calories_advanced(self):
         with self.assertRaises(MealTooBigError) as e:
-            total_calories_counter(['meal-1','combo-2','meal-4','combo-3'])
-            self.assertEqual(e.exception.message, 'Too many calories: 2105', 
-                             f'Wrong message; expected: Too many calories: 2105')
+            calorie_counter_advanced_data(['meal-4','meal-4','combo-2','meal-4','combo-3'])
+        self.assertEqual(e.exception.message, 'Too many calories: 2205; maximum is 2000.', 
+                             f'Wrong message; expected: Too many calories: 2205')
 
     def test_meal_out_of_the_menu_advanced(self):
        with self.assertRaises(MealOutOfTheMenu) as e:
-            total_calories_counter(['hamburger'])
-            self.assertEqual(e.exception.message, 'A meal "hamburger" is not in the menu', 
-                             f'Wrong message; expected: A meal "hamburger" is not in the menu')
+            calorie_counter_advanced_data(['hamburger'])
+       self.assertEqual(e.exception.message, 'The meal "hamburger" is not in the menu.', 
+                             f'Wrong message; expected: The meal "hamburger" is not in the menu')
 
 
 #price counter with the  same tests

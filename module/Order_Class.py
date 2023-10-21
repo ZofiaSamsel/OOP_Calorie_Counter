@@ -56,7 +56,7 @@ class Order:
                 self._calories = calorie_counter_advanced_data(self.items) 
                 self.order_accepted = True
             except Exception as e:
-                self.order_refused_reason = e
+                self.order_refused_reason = str(e)
                 self.order_accepted = False
         return self._calories
     
