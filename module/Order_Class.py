@@ -50,7 +50,7 @@ class Order:
 
    
     @property
-    def calories(self):
+    def calories(self) -> int:
         if self._calories is None:
             try:
                 self._calories = calorie_counter_advanced_data(self.items) 
@@ -61,7 +61,7 @@ class Order:
         return self._calories
     
     @property
-    def price(self):
+    def price(self) -> int:
         if self._price is None and self._calories is not None:
             self._price = costs_counter_advanced_data(self.items)
         return self._price
