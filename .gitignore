@@ -3,6 +3,7 @@ examples_of_use.ipynb
 
 #ignore virtual environment
 .venv
+.vscode
 
 #ignore requirements
 #requirements.txt
